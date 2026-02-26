@@ -27,7 +27,7 @@ public class ProdutosModel {
     private Integer quantidade;
 
     @Column (name = "descricao")
-    private String descricapProduto;
+    private String descricaoProduto;
 
     @OneToMany(mappedBy = "produtos" )
     @JsonIgnore
