@@ -1,7 +1,7 @@
-package farmacias.x.projectfarmacia.Produtos;
+package farmacias.x.projectfarmacia.Produtos.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import farmacias.x.projectfarmacia.User.UserModel;
+import farmacias.x.projectfarmacia.User.Model.UserModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

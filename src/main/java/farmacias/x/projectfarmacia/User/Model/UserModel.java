@@ -1,6 +1,6 @@
-package farmacias.x.projectfarmacia.User;
+package farmacias.x.projectfarmacia.User.Model;
 
-import farmacias.x.projectfarmacia.Produtos.ProdutosModel;
+import farmacias.x.projectfarmacia.Produtos.Model.ProdutosModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
