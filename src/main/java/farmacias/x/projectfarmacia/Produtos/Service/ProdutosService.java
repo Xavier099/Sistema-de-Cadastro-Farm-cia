@@ -45,4 +45,9 @@ public class ProdutosService {
         return listByid.map(produtosMapper::map).orElse(null);
     }
 
+    //delete by id
+    public void deletar(Long id){
+        produtosRepository.deleteById(id);
+    }
+
 }
