@@ -51,4 +51,16 @@ public class UserService {
     public void delete(Long id){
         userRepository.deleteById(id);
     }
+
+    //update
+    public UserDTO update(Long id, UserDTO userDTO){
+        Optional<UserModel> updateUser = userRepository.findById(id);
+        if (updateUser.isPresent()){
+            UserModel useratt = userMapper.map(userDTO);
+            useratt.setId(id);
+            UserModel userSave = userRepository.save(useratt);
+            return userMapper.map(userSave);
+        }
+        return null;
+    }
 }

@@ -31,6 +31,10 @@ public class Controller {
         return produtosService.createProduto(user);
     }
 
+    public ProdutosDTO updateProduct(@PathVariable Long id,@RequestBody ProdutosDTO produtosDTO){
+        return produtosService.update(id, produtosDTO);
+    }
+
     public void deletar(@PathVariable Long id){
         produtosService.deletar(id);
     }

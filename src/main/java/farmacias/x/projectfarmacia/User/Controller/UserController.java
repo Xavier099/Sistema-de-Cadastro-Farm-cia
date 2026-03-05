@@ -33,6 +33,11 @@ public class UserController {
     public List<UserDTO> criar(@RequestBody List<UserDTO> userDTO){
         return userService.createUser(userDTO);
     }
+
+    //update
+    public UserDTO updateUser(@PathVariable Long id, @RequestBody UserDTO userDTO){
+        return userService.update(id, userDTO);
+    }
     //deletar
     @DeleteMapping("/deletar/{id}")
     public void deletar(@PathVariable Long id){

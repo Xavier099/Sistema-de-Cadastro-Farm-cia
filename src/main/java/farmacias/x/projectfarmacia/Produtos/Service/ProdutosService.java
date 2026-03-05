@@ -45,6 +45,17 @@ public class ProdutosService {
         return listByid.map(produtosMapper::map).orElse(null);
     }
 
+    //update
+    public ProdutosDTO update(Long id, ProdutosDTO produtosDTO){
+        Optional<ProdutosModel> produtos = produtosRepository.findById(id);
+        if (produtos.isPresent()){
+            ProdutosModel produtoModel = produtosMapper.map(produtosDTO);
+            produtoModel.setId(id);
+            ProdutosModel produtoAtualizado = produtosRepository.save(produtoModel);
+            return produtosMapper.map(produtoAtualizado);
+        }
+    }
+
     //delete by id
     public void deletar(Long id){
         produtosRepository.deleteById(id);
