@@ -22,15 +22,10 @@ public class UserService {
     }
 
     //create user
-    public List<UserDTO> createUser(List<UserDTO> userDTO){
-        List<UserModel> user = userDTO.stream()
-                .map(userMapper::map)
-                .collect(Collectors.toList());
-        List<UserModel> userSave = userRepository.saveAll(user);
-
-        return userSave.stream()
-                .map(userMapper::map)
-                .collect(Collectors.toList());
+    public UserDTO createUser(UserDTO userDTO){
+       UserModel user = userMapper.map(userDTO);
+       user = userRepository.save(user);
+       return userMapper.map(user);
     }
 
     //list
