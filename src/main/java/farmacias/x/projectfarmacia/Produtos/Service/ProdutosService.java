@@ -21,14 +21,10 @@ public class ProdutosService {
     }
 
     //create
-    public List<ProdutosDTO> createProduto(List<ProdutosDTO> produtosDTO){
-        List<ProdutosModel> produto = produtosDTO.stream()
-                .map(produtosMapper::map)
-                .collect(Collectors.toList());
-        List<ProdutosModel> productSave = produtosRepository.saveAll(produto);
-        return productSave.stream()
-                .map(produtosMapper::map)
-                .collect(Collectors.toList());
+    public ProdutosDTO createProduto(ProdutosDTO produtosDTO){
+        ProdutosModel produtos = produtosMapper.map(produtosDTO);
+        produtos = produtosRepository.save(produtos);
+        return produtosMapper.map(produtos);
     }
 
     //list
@@ -54,6 +50,7 @@ public class ProdutosService {
             ProdutosModel produtoAtualizado = produtosRepository.save(produtoModel);
             return produtosMapper.map(produtoAtualizado);
         }
+        return null;
     }
 
     //delete by id
