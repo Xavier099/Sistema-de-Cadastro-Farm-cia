@@ -46,6 +46,7 @@ public class UserController {
     }
 
     //update
+    @PatchMapping("/update/{id}")
     public ResponseEntity<?> updateUser(@PathVariable Long id, @RequestBody UserDTO userDTO){
         UserDTO userUpdate = userService.update(id, userDTO);
         if(userService.listByid(id) != null){
