@@ -48,14 +48,17 @@ public class UserService {
     }
 
     //update
-    public UserDTO update(Long id, UserDTO userDTO){
-        Optional<UserModel> updateUser = userRepository.findById(id);
-        if (updateUser.isPresent()){
-            UserModel useratt = userMapper.map(userDTO);
-            useratt.setId(id);
-            UserModel userSave = userRepository.save(useratt);
-            return userMapper.map(userSave);
-        }
-        return null;
+    public UserDTO update(Long id, UserDTO userDto){
+        UserModel user = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuario nao encontrado"));
+
+        if (userDto.getName() != null) user.setName(userDto.getName());
+        if (userDto.getTelefone() != null) user.setTelefone(userDto.getTelefone());
+        if (userDto.getEmail() != null) user.setEmail(userDto.getEmail());
+        if (userDto.getCpf() != null) user.setCpf(userDto.getCpf());
+        if (userDto.getProdutos() != null) user.setProdutos(userDto.getProdutos());
+
+        UserModel saved = userRepository.save(user);
+        return new UserDTO(saved);
     }
 }
